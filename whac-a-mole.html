@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whac-A-Mole Game</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #272727;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            margin: 0;
+        }
+
+        .score {
+            margin-top: 20px;
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .game-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: #1a1a1a;
+            border: 10px solid #333;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .mole {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background-color: #6b6b6b;
+            border: 5px solid #333;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 26px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .mole:hover {
+            background-color: #4d4d4d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="score" id="score">Score: 0</div>
+<div class="game-container" id="gameContainer"></div>
+
+<script>
+    const gameContainer = document.getElementById("gameContainer");
+    const scoreDisplay = document.getElementById("score");
+    let score = 0;
+
+    function createMole() {
+        const mole = document.createElement("div");
+        mole.classList.add("mole");
+        mole.innerText = "👾";
+
+        mole.style.left = `${Math.random() * (gameContainer.clientWidth - 70)}px`;
+        mole.style.top = `${Math.random() * (gameContainer.clientHeight - 70)}px`;
+
+        mole.addEventListener("click", () => {
+            score++;
+            updateScore();
+            gameContainer.removeChild(mole);
+            createMole();
+        });
+
+        gameContainer.appendChild(mole);
+
+        setTimeout(() => {
+            gameContainer.removeChild(mole);
+            createMole();
+        }, 1000 + Math.random() * 1000);
+    }
+
+    function updateScore() {
+        scoreDisplay.innerText = `Score: ${score}`;
+    }
+
+    createMole(); // Start the game by creating the first mole
+</script>
+
+</body>
+</html>

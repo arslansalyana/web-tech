@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Change upon click</title>
+</head>
+<body style="text-align: center;">
+
+    <div style="position: absolute; top: 40%; left: 35%;">
+        <h1 style="color: green;">
+            Muhammad Arslan Salyana
+        </h1>
+        <h3>
+            Click on button to change the background Color
+        </h3>
+        <button onclick="myFunc()" style="padding: 8px;">
+            Click Here
+        </button>
+        <h2 id="arslan" style="color: green;"></h2>
+    </div>
+
+    <script>
+        let result = document.getElementById("arslan");
+        function changeColor(color){
+            document.body.style.backgroundColor = color;
+        }
+        function myFunc(){
+            changeColor('yellow');
+            result.innerHTML = 'Background color changed!'
+        }
+    </script>
+    
+</body>
+</html>

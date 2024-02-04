@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Characters Count</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #fff;
+            background-color: #0a2351;
+        }
+        .form{
+            background-color: #002244;
+            border: 4px solid #003153;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 50%;
+            width: 40%;
+            border-radius: 3%;
+        }
+        label{
+            font-size: 1.5em;
+            position: absolute;
+            top: 8%;
+            left: 36%; 
+            box-sizing: border-box;
+            /* display: block; */
+        }
+        input{
+            box-sizing: border-box;
+            position: absolute;
+            top: 28%;
+            left: 25%;
+            padding: 15px 35px;
+        }
+        button{
+           position: absolute;
+           top: 80%;
+           left: 33%;
+           padding: 12px;
+           font-weight: bold;
+        }
+        button:hover {
+            background-color: #003060;
+            color: white;
+        }
+        p{
+            position: absolute;
+            top: 55%;
+            left: 28%;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form">
+        <label for="input">Enter the text</label><br>
+        <input type="text" name="input" id="input"><br>
+        <p id="result"></p>
+        <button type="button" id="countbtn">Count the Characters</button>
+    </div>
+
+    <script>
+
+        const input = document.getElementById('input');
+        const countbtn = document.getElementById('countbtn');
+        const result = document.getElementById('result');
+
+        countbtn.addEventListener('click', ()=>{
+            const words = input.value.length;
+            result.textContent = `The text contains ${words} characters`
+        })
+
+    </script>
+</body>
+</html>

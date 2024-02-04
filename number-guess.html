@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fancy Number Guessing Game</title>
+ 
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .game-container {
+            border: 5px solid transparent; /* Transparent border around the content */
+            border-image: linear-gradient(to right, #3498db, #2ecc71); /* Gradient for a colorful border */
+            border-image-slice: 1;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Subtle box shadow */
+            padding: 20px;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        p {
+            color: #2c3e50;
+        }
+
+        .form {
+            margin-top: 20px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+ 
+<body>
+    <div class="game-container">
+        <h1>🎉 Guess The Magic Number 🎉</h1>
+        <p>
+            We have selected a mystical number 
+            between 1 - 10. Can you unlock its secret?
+        </p>
+     
+        <div class="form">
+            <label for="guessField">
+                🔮 Enter your magical guess: 
+            </label>
+             
+            <input type="number" id="guessField" class="guessField" placeholder="Your guess here">
+             
+            <input type="submit" value="Cast Your Spell"
+                class="guessSubmit" id="submitguess">
+        </div>
+
+        <script type="text/javascript">
+            let magicNumber = Math.floor(Math.random() * 10 + 1);
+            let guessCount = 1;
+
+            document.getElementById("submitguess").onclick = function () {
+                let userGuess = parseInt(document.getElementById("guessField").value);
+
+                if (userGuess === magicNumber) {
+                    alert(`🎊 Hooray! You've unlocked the magic number in ${guessCount} attempts! 🎉`);
+                } else if (userGuess > magicNumber) {
+                    guessCount++;
+                    alert("🔮 Oops! Your magic is too high. Try a smaller enchantment. 🔮");
+                } else {
+                    guessCount++;
+                    alert("🔮 Oops! Your magic is too low. Cast a greater enchantment. 🔮");
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
